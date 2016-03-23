@@ -46,7 +46,7 @@ Vagrant.configure('2') do |config|
     rackhdsrc01.vm.hostname = 'rackhdsrc01'
     rackhdsrc01.vm.network "forwarded_port", guest: 8080, host: 8080
 
-    rackhdsrc01.vm.network "private_network", ip: "192.168.37.2", virtualbox__intnet: "rackhdnet"
+    rackhdsrc01.vm.network "private_network", ip: "192.168.37.2", virtualbox__intnet: "racksrcnet"
 
     rackhdsrc01.vm.provision "shell", path: "tools/install.sh"
 
@@ -72,7 +72,7 @@ Vagrant.configure('2') do |config|
       end
       vm.customize ["modifyvm", :id, "--macaddress1", "080027BCF888"]
       vm.customize ["modifyvm", :id, "--nic1", "intnet"]
-      vm.customize ["modifyvm", :id, "--intnet1", "rackhdnet"]
+      vm.customize ["modifyvm", :id, "--intnet1", "racksrcnet"]
       vm.customize ["modifyvm", :id, "--nicbootprio1", "1"]
       vm.customize ["modifyvm", :id, "--boot1", "net"]
       vm.customize ["setextradata", :id, "VBoxInternal/Devices/pcbios/0/Config/DmiSystemSerial", "pxe01"]
@@ -95,7 +95,7 @@ Vagrant.configure('2') do |config|
       end
       vm.customize ["modifyvm", :id, "--macaddress1", "080027BCF889"]
       vm.customize ["modifyvm", :id, "--nic1", "intnet"]
-      vm.customize ["modifyvm", :id, "--intnet1", "rackhdnet"]
+      vm.customize ["modifyvm", :id, "--intnet1", "racksrcnet"]
       vm.customize ["modifyvm", :id, "--nicbootprio1", "1"]
       vm.customize ["modifyvm", :id, "--boot1", "net"]
       vm.customize ["setextradata", :id, "VBoxInternal/Devices/pcbios/0/Config/DmiSystemSerial", "pxe02"]
